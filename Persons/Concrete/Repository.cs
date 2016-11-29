@@ -11,8 +11,7 @@ namespace Persons.Concrete
     public class PersonsRepository<T> : IRepository<T> where T:Person
     {        
         private List<Person> list;
-        private IPagginator pagginator;
-
+        
         public PersonsRepository()
         {
             list = new List<Person> {
@@ -40,25 +39,6 @@ namespace Persons.Concrete
                 new Person { ID = 22, Age = 22, Name = "Vikky" }
             };
         }
-
-        //public Task<List<Person>> GetMorePersosns()
-        //{
-        //    return Task.Run(() =>
-        //    {
-        //        return new List<Person> {
-        //        new Person { ID = 13, Age = 34, Name = "Sergey" },
-        //        new Person { ID = 14, Age = 26, Name = "Luiza" },
-        //        new Person { ID = 15, Age = 24, Name = "Marta" },
-        //        new Person { ID = 16, Age = 48, Name = "Pascal" },
-        //        new Person { ID = 17, Age = 41, Name = "Jordan" },
-        //        new Person { ID = 18, Age = 38, Name = "York" },
-        //        new Person { ID = 19, Age = 25, Name = "Nali" },
-        //        new Person { ID = 20, Age = 29, Name = "Jim" },
-        //        new Person { ID = 21, Age = 36, Name = "Vanessa" },
-        //        new Person { ID = 22, Age = 22, Name = "Vikky" }
-        //        };
-        //    });   
-        //}
 
         public Task<T> GetItemAsync(int Id)
         {
