@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persons.Abstract
 {
-    interface IRepository<T> where T: class
+    public interface IRepository<T> where T: class
     {
         Task<List<T>> GetListAsync();
         Task<T> GetItemAsync(int Id);

@@ -12,11 +12,11 @@ namespace Persons.Controllers
 {
     public class PersonsController : Controller
     {
-        private PersonsRepository repo;
+        private IRepository<Person> repo;
 
-        public PersonsController()
+        public PersonsController(IRepository<Person> repository)
         {
-            repo = new PersonsRepository();
+            repo = repository;
         }
 
         public async Task<ActionResult> Index()
@@ -26,10 +26,9 @@ namespace Persons.Controllers
             return View(items);
         }
         
-        //[AcceptVerbs(HttpVerbs.Get)]
         public async Task<PartialViewResult> GetMorePersons()
         {
-            var list = await repo.GetMorePersosns();
+            var list = await repo.GetListAsync();
             return PartialView("PersonsPartial", list);
         }
     }
