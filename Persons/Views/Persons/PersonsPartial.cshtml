@@ -1,0 +1,12 @@
+﻿@model List<Persons.Models.Person>
+@if (Model != null)
+{
+    foreach (Persons.Models.Person item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Age</td>
+        </tr>
+    }
+}
+

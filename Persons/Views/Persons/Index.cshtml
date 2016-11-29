@@ -1,24 +1,30 @@
 ﻿@model List<Persons.Models.Person>
-
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Persons/_PersonInfo.cshtml";
 }
 
-<div class="panel panel-primary">
-    <h2 class="panel-heading">Persons</h2>
+<div class="panel panel-primary col-lg-offset-3 col-md-5">
+    <h2 class="panel-heading text-center">Persons</h2>
     <div class="panel panel-body">
-        <div id="personsConteiner">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody id="personContent">
+                @Html.Partial("PersonsPartial", Model)
+            </tbody>
+        </table> 
+        
+        
+        @Ajax.ActionLink("Get more persons", "Index", new { controller = "Persons" }, new AjaxOptions
+        {
+            InsertionMode = InsertionMode.InsertAfter,
+            UpdateTargetId = "personContent",
+            Url = Url.Action("GetMorePersons")
+        }, new { @class = "btn btn-default center-block" })
 
-        </div>
-        <button class="btn btn-default center-block" onclick="getPersons()">Get persons</button>
     </div>
 </div>
-
-<script>
-    function getPersons()
-    {
-        alert("Geting persons!");
-    }
-</script>
-
